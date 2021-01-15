@@ -19,7 +19,7 @@ function numeriUtente(){
   var array = [];
   var numeroUtente;
   while(array.length < 5){
-    numeroUtente = Number(prompt('Inserisci un numero'));
+    numeroUtente = Number(prompt('Inserisci il ' + (array.length + 1) + '° numero'));
     if(isNaN(numeroUtente) || controlRepeat(array, numeroUtente) || numeroUtente < 1){
       alert('Inserisci un NUMERO non ripetuto!');
     }else{
@@ -44,28 +44,21 @@ while(arrayRandom.length < 5){
 
 // mostro numeri all' utente
 console.log(arrayRandom)
-alert('Memorizza i seguenti numeri,dai l\' ok e attendi 30 secondi ' + arrayRandom);
+alert('Memorizza i seguenti numeri,dai l\' ok e attendi 10 secondi ' + arrayRandom);
 
-
-
-
-
-
+// passato il tempo inizia il gioco
 setTimeout(function(){
   var arrayUtente = numeriUtente();
-  console.log(arrayUtente);
+  // controllo i numeri
   for(x = 0; x < arrayUtente.length; x++){
     if(controlRepeat(arrayRandom, arrayUtente[x])){
       arrayWinLose.push(arrayUtente[x])
     }
   }
+  // decreto esito gioco
   if(arrayWinLose.length === 5){
-    alert('Bravo! Hai vinto!!!')
+    alert('Bravo! Hai vinto!!!Hai indovinato tutti i numeri: ' + arrayWinLose)
   }else{
     alert('Hai indovinato ' + arrayWinLose.length + ' numeri: ' + arrayWinLose)
   }
-
-
-
-
-}, 2000)
+}, 10000)
