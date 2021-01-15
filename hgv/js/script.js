@@ -18,16 +18,15 @@ function controlRepeat(arr, num){
 function numeriUtente(){
   var array = [];
   var numeroUtente;
-  while(array.length < 5){
+  for(x = 0; x < arrayRandom.length; x++){
     numeroUtente = Number(prompt('Inserisci un numero'));
-    if(isNaN(numeroUtente) || controlRepeat(array, numeroUtente)){
+    if(!isNaN(numeroUtente) || !controlRepeat(array, numeroUtente)){
       alert('Inserisci un NUMERO non ripetuto!');
-      
-    }else{
-
+    }else if(controlRepeat(arrayRandom, numeroUtente)){
       array.push(numeroUtente);
     }
   }
+
   return array;
 }
 
@@ -55,9 +54,7 @@ alert('Memorizza i seguenti numeri,dai l\' ok e attendi 30 secondi ' + arrayRand
 setTimeout(function(){
   var arrayUtente = numeriUtente();
   console.log(arrayUtente);
-  if(arrayRandom.includes(arrayUtente)){
-    console.log('ciao');
-  }
+
 
 
 
