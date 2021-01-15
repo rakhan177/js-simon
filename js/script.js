@@ -20,11 +20,9 @@ function numeriUtente(){
   var numeroUtente;
   while(array.length < 5){
     numeroUtente = Number(prompt('Inserisci un numero'));
-    if(isNaN(numeroUtente) || controlRepeat(array, numeroUtente)){
+    if(isNaN(numeroUtente) || controlRepeat(array, numeroUtente) || numeroUtente < 1){
       alert('Inserisci un NUMERO non ripetuto!');
-      
     }else{
-
       array.push(numeroUtente);
     }
   }
@@ -34,6 +32,7 @@ function numeriUtente(){
 // dichiarazione variabii
 var arrayRandom = [];
 var numeroRandom;
+var arrayWinLose = [];
 
 // genero 5 numeri randomici
 while(arrayRandom.length < 5){
@@ -55,9 +54,17 @@ alert('Memorizza i seguenti numeri,dai l\' ok e attendi 30 secondi ' + arrayRand
 setTimeout(function(){
   var arrayUtente = numeriUtente();
   console.log(arrayUtente);
-  if(arrayRandom.includes(arrayUtente)){
-    console.log('ciao');
+  for(x = 0; x < arrayUtente.length; x++){
+    if(controlRepeat(arrayRandom, arrayUtente[x])){
+      arrayWinLose.push(arrayUtente[x])
+    }
   }
+  if(arrayWinLose.length === 5){
+    alert('Bravo! Hai vinto!!!')
+  }else{
+    alert('Hai indovinato ' + arrayWinLose.length + ' numeri: ' + arrayWinLose)
+  }
+
 
 
 
